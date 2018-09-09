@@ -41,66 +41,39 @@ public class JavaSpecialSymbolToken extends JavaToken
 
         switch (currentChar) {
 
-            // Single-character special symbols.
-            case '+':  case '-':  case '*':  case '/':  case ',':
-            case ';':  case '\'': case '=':  case '(':  case ')':
-            case '[':  case ']':  case '{':  case '}':  case '^': {
-                nextChar();  // consume character
-                break;
-            }
+        	// Single-character special symbols.
+	        case '~':   case '@':  case ':':   case ';':   case '?':
+	        case '.':   case ',':  case '\'':  case '"':   case '(':
+	        case ')':   case '[':  case ']':   case '{':   case '}':
+        	{
+        		nextChar();  // consume character
+		        break;
+			}
 
-            // : or :=
-            case ':': {
-                currentChar = nextChar();  // consume ':';
+        	// / or /*
+	        case '/': {
+	        	currentChar = nextChar();  // consume '/';
 
-                if (currentChar == '=') {
-                    text += currentChar;
-                    nextChar();  // consume '='
-                }
+	        	if (currentChar == '*') {
+					text += currentChar;
+					nextChar();  // consume '*'
+				}
+    			
+    			break;
+	        }
+	        
+	        // * or */
+	        case '*': {
+	        	currentChar = nextChar();  // consume '*';
 
-                break;
-            }
-
-            // < or <= or <>
-            case '<': {
-                currentChar = nextChar();  // consume '<';
-
-                if (currentChar == '=') {
-                    text += currentChar;
-                    nextChar();  // consume '='
-                }
-                else if (currentChar == '>') {
-                    text += currentChar;
-                    nextChar();  // consume '>'
-                }
-
-                break;
-            }
-
-            // > or >=
-            case '>': {
-                currentChar = nextChar();  // consume '>';
-
-                if (currentChar == '=') {
-                    text += currentChar;
-                    nextChar();  // consume '='
-                }
-
-                break;
-            }
-
-            // . or ..
-            case '.': {
-                currentChar = nextChar();  // consume '.';
-
-                if (currentChar == '.') {
-                    text += currentChar;
-                    nextChar();  // consume '.'
-                }
-
-                break;
-            }
-
+    			if (currentChar == '/') {
+					text += currentChar;
+					nextChar();  // consume '/'
+				}
+    			
+    			break;
+	        }
+        	
             default: {
                 nextChar();  // consume bad character
                 type = ERROR;
