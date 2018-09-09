@@ -1,27 +1,27 @@
 package wci.frontend.java;
 
 import wci.frontend.*;
-import wci.frontend.pascal.tokens.*;
+import wci.frontend.java.tokens.*;
 
 import static wci.frontend.Source.EOF;
-import static wci.frontend.pascal.PascalTokenType.*;
-import static wci.frontend.pascal.PascalErrorCode.*;
+import static wci.frontend.java.JavaTokenType.*;
+import static wci.frontend.java.JavaErrorCode.*;
 
 /**
- * <h1>PascalScanner</h1>
+ * <h1>JavaScanner</h1>
  *
- * <p>The Pascal scanner.</p>
+ * <p>The Java scanner.</p>
  *
  * <p>Copyright (c) 2009 by Ronald Mak</p>
  * <p>For instructional purposes only.  No warranties.</p>
  */
-public class PascalScanner extends Scanner
+public class JavaScanner extends Scanner
 {
     /**
      * Constructor
      * @param source the source to be used with this scanner.
      */
-    public PascalScanner(Source source)
+    public JavaScanner(Source source)
     {
         super(source);
     }
@@ -45,20 +45,20 @@ public class PascalScanner extends Scanner
             token = new EofToken(source);
         }
         else if (Character.isLetter(currentChar)) {
-            token = new PascalWordToken(source);
+            token = new JavaWordToken(source);
         }
         else if (Character.isDigit(currentChar)) {
-            token = new PascalNumberToken(source);
+            token = new JavaNumberToken(source);
         }
         else if (currentChar == '\'') {
-            token = new PascalStringToken(source);
+            token = new JavaStringToken(source);
         }
-        else if (PascalTokenType.SPECIAL_SYMBOLS
+        else if (JavaTokenType.SPECIAL_SYMBOLS
                  .containsKey(Character.toString(currentChar))) {
-            token = new PascalSpecialSymbolToken(source);
+            token = new JavaSpecialSymbolToken(source);
         }
         else {
-            token = new PascalErrorToken(source, INVALID_CHARACTER,
+            token = new JavaErrorToken(source, INVALID_CHARACTER,
                                          Character.toString(currentChar));
             nextChar();  // consume character
         }
