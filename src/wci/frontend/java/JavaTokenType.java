@@ -15,11 +15,15 @@ import wci.frontend.TokenType;
  */
 public enum JavaTokenType implements TokenType
 {
-    // Reserved words.
-    AND, ARRAY, BEGIN, CASE, CONST, DIV, DO, DOWNTO, ELSE, END,
-    FILE, FOR, FUNCTION, GOTO, IF, IN, LABEL, MOD, NIL, NOT,
-    OF, OR, PACKED, PROCEDURE, PROGRAM, RECORD, REPEAT, SET,
-    THEN, TO, TYPE, UNTIL, VAR, WHILE, WITH,
+    // Reserved words.    
+    ABSTRACT, DOUBLE, INT, SUPER,
+    BREAK, ELSE, LONG, SWITCH,
+    CASE, ENUM, NATIVE,
+    CHAR, EXTENDS, RETURN, THIS,
+    CLASS, FLOAT, SHORT, THROW,
+    CONST, FOR, PACKAGE, VOID,
+    CONTINUE, GOTO, PROTECTED, VOLATILE,
+    DO, IF, STATIC, WHILE,
 
     // Special symbols.
     PLUS("+"), MINUS("-"), STAR("*"), SLASH("/"), COLON_EQUALS(":="),
@@ -32,8 +36,8 @@ public enum JavaTokenType implements TokenType
     IDENTIFIER, INTEGER, REAL, STRING,
     ERROR, END_OF_FILE;
 
-    private static final int FIRST_RESERVED_INDEX = AND.ordinal();
-    private static final int LAST_RESERVED_INDEX  = WITH.ordinal();
+    private static final int FIRST_RESERVED_INDEX = ABSTRACT.ordinal();
+    private static final int LAST_RESERVED_INDEX  = WHILE.ordinal();
 
     private static final int FIRST_SPECIAL_INDEX = PLUS.ordinal();
     private static final int LAST_SPECIAL_INDEX  = DOT_DOT.ordinal();
