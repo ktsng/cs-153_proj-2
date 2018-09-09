@@ -1,35 +1,35 @@
-package wci.frontend.pascal;
+package wci.frontend.java;
 
 import wci.frontend.*;
 import wci.message.Message;
 
-import static wci.frontend.pascal.PascalTokenType.*;
-import static wci.frontend.pascal.PascalErrorCode.*;
+import static wci.frontend.java.JavaErrorCode.*;
+import static wci.frontend.java.JavaTokenType.*;
 import static wci.message.MessageType.*;
 
 /**
- * <h1>PascalParserTD</h1>
+ * <h1>JavaParserTD</h1>
  *
- * <p>The top-down Pascal parser.</p>
+ * <p>The top-down Java parser.</p>
  *
  * <p>Copyright (c) 2009 by Ronald Mak</p>
  * <p>For instructional purposes only.  No warranties.</p>
  */
-public class PascalParserTD extends Parser
+public class JavaParserTD extends Parser
 {
-    protected static PascalErrorHandler errorHandler = new PascalErrorHandler();
+    protected static JavaErrorHandler errorHandler = new JavaErrorHandler();
 
     /**
      * Constructor.
      * @param scanner the scanner to be used with this parser.
      */
-    public PascalParserTD(Scanner scanner)
+    public JavaParserTD(Scanner scanner)
     {
         super(scanner);
     }
 
     /**
-     * Parse a Pascal source program and generate the symbol table
+     * Parse a Java source program and generate the symbol table
      * and the intermediate code.
      */
     public void parse()
@@ -54,7 +54,7 @@ public class PascalParserTD extends Parser
                                                           token.getValue()}));
                 }
                 else {
-                    errorHandler.flag(token, (PascalErrorCode) token.getValue(),
+                    errorHandler.flag(token, (JavaErrorCode) token.getValue(),
                                       this);
                 }
 

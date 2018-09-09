@@ -1,20 +1,20 @@
-package wci.frontend.pascal.tokens;
+package wci.frontend.java.tokens;
+
+import static wci.frontend.java.JavaErrorCode.*;
+import static wci.frontend.java.JavaTokenType.*;
 
 import wci.frontend.*;
-import wci.frontend.pascal.*;
-
-import static wci.frontend.pascal.PascalTokenType.*;
-import static wci.frontend.pascal.PascalErrorCode.*;
+import wci.frontend.java.*;
 
 /**
- * <h1>PascalNumberToken</h1>
+ * <h1>JavaNumberToken</h1>
  *
- * <p>Pascal number tokens (integer and real).</p>
+ * <p>Java number tokens (integer and real).</p>
  *
  * <p>Copyright (c) 2009 by Ronald Mak</p>
  * <p>For instructional purposes only.  No warranties.</p>
  */
-public class PascalNumberToken extends PascalToken
+public class JavaNumberToken extends JavaToken
 {
     private static final int MAX_EXPONENT = 37;
 
@@ -23,14 +23,14 @@ public class PascalNumberToken extends PascalToken
      * @param source the source from where to fetch the token's characters.
      * @throws Exception if an error occurred.
      */
-    public PascalNumberToken(Source source)
+    public JavaNumberToken(Source source)
         throws Exception
     {
         super(source);
     }
 
     /**
-     * Extract a Pascal number token from the source.
+     * Extract a Java number token from the source.
      * @throws Exception if an error occurred.
      */
     protected void extract()
@@ -42,7 +42,7 @@ public class PascalNumberToken extends PascalToken
     }
 
     /**
-     * Extract a Pascal number token from the source.
+     * Extract a Java number token from the source.
      * @param textBuffer the buffer to append the token's characters.
      * @throws Exception if an error occurred.
      */

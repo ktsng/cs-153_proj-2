@@ -1,23 +1,23 @@
-package wci.frontend.pascal;
+package wci.frontend.java;
 
 import wci.frontend.*;
 
 /**
- * <h1>PascalToken</h1>
+ * <h1>JavaToken</h1>
  *
- * <p>Base class for Pascal token classes.</p>
+ * <p>Base class for Java token classes.</p>
  *
  * <p>Copyright (c) 2009 by Ronald Mak</p>
  * <p>For instructional purposes only.  No warranties.</p>
  */
-public class PascalToken extends Token
+public class JavaToken extends Token
 {
     /**
      * Constructor.
      * @param source the source from where to fetch the token's characters.
      * @throws Exception if an error occurred.
      */
-    protected PascalToken(Source source)
+    protected JavaToken(Source source)
         throws Exception
     {
         super(source);

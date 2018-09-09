@@ -1,21 +1,21 @@
-package wci.frontend.pascal;
+package wci.frontend.java;
 
 import wci.frontend.*;
 import wci.message.Message;
 
-import static wci.frontend.pascal.PascalTokenType.*;
-import static wci.frontend.pascal.PascalErrorCode.*;
+import static wci.frontend.java.JavaErrorCode.*;
+import static wci.frontend.java.JavaTokenType.*;
 import static wci.message.MessageType.SYNTAX_ERROR;
 
 /**
- * <h1>PascalErrorHandler</h1>
+ * <h1>JavaErrorHandler</h1>
  *
- * <p>Error handler Pascal syntax errors.</p>
+ * <p>Error handler Java syntax errors.</p>
  *
  * <p>Copyright (c) 2009 by Ronald Mak</p>
  * <p>For instructional purposes only.  No warranties.</p>
  */
-public class PascalErrorHandler
+public class JavaErrorHandler
 {
     private static final int MAX_ERRORS = 25;
 
@@ -37,7 +37,7 @@ public class PascalErrorHandler
      * @param parser the parser.
      * @return the flagger string.
      */
-    public void flag(Token token, PascalErrorCode errorCode, Parser parser)
+    public void flag(Token token, JavaErrorCode errorCode, Parser parser)
     {
         // Notify the parser's listeners.
         parser.sendMessage(new Message(SYNTAX_ERROR,
@@ -56,7 +56,7 @@ public class PascalErrorHandler
      * @param errorCode the error code.
      * @param parser the parser.
      */
-    public void abortTranslation(PascalErrorCode errorCode, Parser parser)
+    public void abortTranslation(JavaErrorCode errorCode, Parser parser)
     {
         // Notify the parser's listeners and then abort.
         String fatalText = "FATAL ERROR: " + errorCode.toString();

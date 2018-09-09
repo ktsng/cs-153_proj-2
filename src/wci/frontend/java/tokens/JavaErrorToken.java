@@ -1,19 +1,19 @@
-package wci.frontend.pascal.tokens;
+package wci.frontend.java.tokens;
+
+import static wci.frontend.java.JavaTokenType.*;
 
 import wci.frontend.*;
-import wci.frontend.pascal.*;
-
-import static wci.frontend.pascal.PascalTokenType.*;
+import wci.frontend.java.*;
 
 /**
- * <h1>PascalErrorToken</h1>
+ * <h1>JavaErrorToken</h1>
  *
- * <p>Pascal error token.</p>
+ * <p>java error token.</p>
  *
  * <p>Copyright (c) 2009 by Ronald Mak</p>
  * <p>For instructional purposes only.  No warranties.</p>
  */
-public class PascalErrorToken extends PascalToken
+public class JavaErrorToken extends JavaToken
 {
     /**
      * Constructor.
@@ -22,7 +22,7 @@ public class PascalErrorToken extends PascalToken
      * @param tokenText the text of the erroneous token.
      * @throws Exception if an error occurred.
      */
-    public PascalErrorToken(Source source, PascalErrorCode errorCode,
+    public JavaErrorToken(Source source, JavaErrorCode errorCode,
                             String tokenText)
         throws Exception
     {
