@@ -1,14 +1,14 @@
-package wci.frontend.java;
+package wci.frontend.pascal;
 
 /**
- * <h1>JavaErrorCode</h1>
+ * <h1>PascalErrorCode</h1>
  *
- * <p>Java translation error codes.</p>
+ * <p>Pascal translation error codes.</p>
  *
  * <p>Copyright (c) 2009 by Ronald Mak</p>
  * <p>For instructional purposes only.  No warranties.</p>
  */
-public enum JavaErrorCode
+public enum PascalErrorCode
 {
     ALREADY_FORWARDED("Already specified in FORWARD"),
     CASE_CONSTANT_REUSED("CASE constant reused"),
@@ -79,7 +79,7 @@ public enum JavaErrorCode
      * Constructor.
      * @param message the error message.
      */
-    JavaErrorCode(String message)
+    PascalErrorCode(String message)
     {
         this.status = 0;
         this.message = message;
@@ -90,7 +90,7 @@ public enum JavaErrorCode
      * @param status the exit status.
      * @param message the error message.
      */
-    JavaErrorCode(int status, String message)
+    PascalErrorCode(int status, String message)
     {
         this.status = status;
         this.message = message;

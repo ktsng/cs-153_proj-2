@@ -1,33 +1,33 @@
-package wci.frontend.java;
+package wci.frontend.pascal;
 
 import wci.frontend.*;
-import wci.frontend.java.tokens.*;
+import wci.frontend.pascal.tokens.*;
 
 import static wci.frontend.Source.EOF;
-import static wci.frontend.java.JavaErrorCode.*;
-import static wci.frontend.java.JavaTokenType.*;
+import static wci.frontend.pascal.PascalTokenType.*;
+import static wci.frontend.pascal.PascalErrorCode.*;
 
 /**
- * <h1>JavaScanner</h1>
+ * <h1>PascalScanner</h1>
  *
- * <p>The Java scanner.</p>
+ * <p>The Pascal scanner.</p>
  *
  * <p>Copyright (c) 2009 by Ronald Mak</p>
  * <p>For instructional purposes only.  No warranties.</p>
  */
-public class JavaScanner extends Scanner
+public class PascalScanner extends Scanner
 {
     /**
      * Constructor
      * @param source the source to be used with this scanner.
      */
-    public JavaScanner(Source source)
+    public PascalScanner(Source source)
     {
         super(source);
     }
 
     /**
-     * Extract and return the next Java token from the source.
+     * Extract and return the next Pascal token from the source.
      * @return the next token.
      * @throws Exception if an error occurred.
      */
@@ -45,20 +45,20 @@ public class JavaScanner extends Scanner
             token = new EofToken(source);
         }
         else if (Character.isLetter(currentChar)) {
-            token = new JavaWordToken(source);
+            token = new PascalWordToken(source);
         }
         else if (Character.isDigit(currentChar)) {
-            token = new JavaNumberToken(source);
+            token = new PascalNumberToken(source);
         }
         else if (currentChar == '\'') {
-            token = new JavaStringToken(source);
+            token = new PascalStringToken(source);
         }
-        else if (JavaTokenType.SPECIAL_SYMBOLS
+        else if (PascalTokenType.SPECIAL_SYMBOLS
                  .containsKey(Character.toString(currentChar))) {
-            token = new JavaSpecialSymbolToken(source);
+            token = new PascalSpecialSymbolToken(source);
         }
         else {
-            token = new JavaErrorToken(source, INVALID_CHARACTER,
+            token = new PascalErrorToken(source, INVALID_CHARACTER,
                                          Character.toString(currentChar));
             nextChar();  // consume character
         }

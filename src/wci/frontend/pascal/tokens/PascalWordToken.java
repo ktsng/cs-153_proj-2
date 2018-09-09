@@ -1,33 +1,33 @@
-package wci.frontend.java.tokens;
-
-import static wci.frontend.java.JavaTokenType.*;
+package wci.frontend.pascal.tokens;
 
 import wci.frontend.*;
-import wci.frontend.java.*;
+import wci.frontend.pascal.*;
+
+import static wci.frontend.pascal.PascalTokenType.*;
 
 /**
- * <h1>JavaWordToken</h1>
+ * <h1>PascalWordToken</h1>
  *
- * <p> Java word tokens (identifiers and reserved words).</p>
+ * <p> Pascal word tokens (identifiers and reserved words).</p>
  *
  * <p>Copyright (c) 2009 by Ronald Mak</p>
  * <p>For instructional purposes only.  No warranties.</p>
  */
-public class JavaWordToken extends JavaToken
+public class PascalWordToken extends PascalToken
 {
     /**
      * Constructor.
      * @param source the source from where to fetch the token's characters.
      * @throws Exception if an error occurred.
      */
-    public JavaWordToken(Source source)
+    public PascalWordToken(Source source)
         throws Exception
     {
         super(source);
     }
 
     /**
-     * Extract a Java word token from the source.
+     * Extract a Pascal word token from the source.
      * @throws Exception if an error occurred.
      */
     protected void extract()
@@ -47,7 +47,7 @@ public class JavaWordToken extends JavaToken
 
         // Is it a reserved word or an identifier?
         type = (RESERVED_WORDS.contains(text.toLowerCase()))
-               ? JavaTokenType.valueOf(text.toUpperCase())  // reserved word
+               ? PascalTokenType.valueOf(text.toUpperCase())  // reserved word
                : IDENTIFIER;                                  // identifier
     }
 }

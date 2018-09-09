@@ -1,36 +1,36 @@
-package wci.frontend.java.tokens;
+package wci.frontend.pascal.tokens;
 
 import wci.frontend.*;
-import wci.frontend.java.*;
+import wci.frontend.pascal.*;
 
 import static wci.frontend.Source.EOL;
-import static wci.frontend.java.JavaErrorCode.*;
-import static wci.frontend.java.JavaTokenType.*;
 import static wci.frontend.Source.EOF;
+import static wci.frontend.pascal.PascalTokenType.*;
+import static wci.frontend.pascal.PascalErrorCode.*;
 
 /**
- * <h1>JavaStringToken</h1>
+ * <h1>PascalStringToken</h1>
  *
- * <p> Java string tokens.</p>
+ * <p> Pascal string tokens.</p>
  *
  * <p>Copyright (c) 2009 by Ronald Mak</p>
  * <p>For instructional purposes only.  No warranties.</p>
  */
-public class JavaStringToken extends JavaToken
+public class PascalStringToken extends PascalToken
 {
     /**
      * Constructor.
      * @param source the source from where to fetch the token's characters.
      * @throws Exception if an error occurred.
      */
-    public JavaStringToken(Source source)
+    public PascalStringToken(Source source)
         throws Exception
     {
         super(source);
     }
 
     /**
-     * Extract a Java string token from the source.
+     * Extract a Pascal string token from the source.
      * @throws Exception if an error occurred.
      */
     protected void extract()

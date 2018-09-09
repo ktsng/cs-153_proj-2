@@ -1,7 +1,7 @@
 package wci.frontend;
 
-import wci.frontend.java.JavaParserTD;
-import wci.frontend.java.JavaScanner;
+import wci.frontend.pascal.PascalParserTD;
+import wci.frontend.pascal.PascalScanner;
 
 /**
  * <h1>FrontendFactory</h1>
@@ -15,7 +15,7 @@ public class FrontendFactory
 {
     /**
      * Create a parser.
-     * @param language the name of the source language (e.g., "Java").
+     * @param language the name of the source language (e.g., "Pascal").
      * @param type the type of parser (e.g., "top-down").
      * @param source the source object.
      * @return the parser.
@@ -25,13 +25,13 @@ public class FrontendFactory
                                       Source source)
         throws Exception
     {
-        if (language.equalsIgnoreCase("Java") &&
+        if (language.equalsIgnoreCase("Pascal") &&
             type.equalsIgnoreCase("top-down"))
         {
-            Scanner scanner = new JavaScanner(source);
-            return new JavaParserTD(scanner);
+            Scanner scanner = new PascalScanner(source);
+            return new PascalParserTD(scanner);
         }
-        else if (!language.equalsIgnoreCase("Java")) {
+        else if (!language.equalsIgnoreCase("Pascal")) {
             throw new Exception("Parser factory: Invalid language '" +
                                 language + "'");
         }

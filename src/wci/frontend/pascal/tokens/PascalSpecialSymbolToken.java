@@ -1,34 +1,34 @@
-package wci.frontend.java.tokens;
-
-import static wci.frontend.java.JavaErrorCode.*;
-import static wci.frontend.java.JavaTokenType.*;
+package wci.frontend.pascal.tokens;
 
 import wci.frontend.*;
-import wci.frontend.java.*;
+import wci.frontend.pascal.*;
+
+import static wci.frontend.pascal.PascalTokenType.*;
+import static wci.frontend.pascal.PascalErrorCode.*;
 
 /**
- * <h1>JavaSpecialSymbolToken</h1>
+ * <h1>PascalSpecialSymbolToken</h1>
  *
- * <p> Java special symbol tokens.</p>
+ * <p> Pascal special symbol tokens.</p>
  *
  * <p>Copyright (c) 2009 by Ronald Mak</p>
  * <p>For instructional purposes only.  No warranties.</p>
  */
-public class JavaSpecialSymbolToken extends JavaToken
+public class PascalSpecialSymbolToken extends PascalToken
 {
     /**
      * Constructor.
      * @param source the source from where to fetch the token's characters.
      * @throws Exception if an error occurred.
      */
-    public JavaSpecialSymbolToken(Source source)
+    public PascalSpecialSymbolToken(Source source)
         throws Exception
     {
         super(source);
     }
 
     /**
-     * Extract a Java special symbol token from the source.
+     * Extract a Pascal special symbol token from the source.
      * @throws Exception if an error occurred.
      */
     protected void extract()
