@@ -50,30 +50,196 @@ public class JavaSpecialSymbolToken extends JavaToken
 		        break;
 			}
 
-        	// / or /*
-	        case '/': {
-	        	currentChar = nextChar();  // consume '/';
-
-	        	if (currentChar == '*') {
+        	// ! or !=
+	        case '!': {
+	        	currentChar = nextChar();  // consume '!';
+	        	
+	        	if (currentChar == '=') {
 					text += currentChar;
-					nextChar();  // consume '*'
+					nextChar();  // consume '='
 				}
-    			
-    			break;
+	        	
+	        	break;
 	        }
+
+        	// % or %=
+	        case '%': {
+	        	currentChar = nextChar();  // consume '%';
+	        	
+	        	if (currentChar == '=') {
+					text += currentChar;
+					nextChar();  // consume '='
+				}
+	        	
+	        	break;
+	        }
+        	
+        	// ^ or ^=
+	        case '^': {
+	        	currentChar = nextChar();  // consume '^';
+	        	
+	        	if (currentChar == '=') {
+					text += currentChar;
+					nextChar();  // consume '='
+				}
+	        	
+	        	break;
+	        }
+
+        	// & or &= or &&
+	        case '&': {
+	        	currentChar = nextChar();  // consume '&';
+	        	
+	        	if (currentChar == '=') {
+					text += currentChar;
+					nextChar();  // consume '='
+				}
+        		else if (currentChar == '&') {
+        			text += currentChar;
+                	nextChar();  // consume '&'
+        		}
+	        	
+	        	break;
+	        }	        
 	        
-	        // * or */
+	        // * or *= or */
 	        case '*': {
 	        	currentChar = nextChar();  // consume '*';
 
-    			if (currentChar == '/') {
+	        	if (currentChar == '=') {
+					text += currentChar;
+					nextChar();  // consume '='
+				}
+	        	else if (currentChar == '/') {
 					text += currentChar;
 					nextChar();  // consume '/'
 				}
     			
     			break;
 	        }
-        	
+	        
+	        // - or -- or -=
+	        case '-': {
+	        	currentChar = nextChar();  // consume '-';
+
+	        	if (currentChar == '-') {
+					text += currentChar;
+					nextChar();  // consume '-'
+				}
+	        	else if (currentChar == '=') {
+					text += currentChar;
+					nextChar();  // consume '='
+				}
+    			
+    			break;
+	        }	        
+	        
+	        // + or ++ or +=
+	        case '+': {
+	        	currentChar = nextChar();  // consume '+';
+
+	        	if (currentChar == '+') {
+					text += currentChar;
+					nextChar();  // consume '+'
+				}
+	        	else if (currentChar == '=') {
+					text += currentChar;
+					nextChar();  // consume '='
+				}
+    			
+    			break;
+	        }
+	        
+        	// = or ==
+	        case '=': {
+	        	currentChar = nextChar();  // consume '=';
+
+	        	if (currentChar == '=') {
+					text += currentChar;
+					nextChar();  // consume '='
+				}
+
+    			break;
+	        }
+	        
+	        // | or |= or ||
+	        case '|': {
+	        	currentChar = nextChar();  // consume '|';
+
+	        	if (currentChar == '=') {
+					text += currentChar;
+					nextChar();  // consume '='
+				}
+	        	else if (currentChar == '|') {
+					text += currentChar;
+					nextChar();  // consume '|'
+				}
+    			
+    			break;
+	        }
+	        	
+        	// / or /= or // or /*
+	        case '/': {
+	        	currentChar = nextChar();  // consume '/';
+
+	        	if (currentChar == '=') {
+					text += currentChar;
+					nextChar();  // consume '='
+				}
+        		else if (currentChar == '/') {
+        			text += currentChar;
+                	nextChar();  // consume '/'
+        		}
+        		else if (currentChar == '*') {
+        			text += currentChar;
+                	nextChar();  // consume '*'
+        		}
+
+    			break;
+	        }
+	        
+        	// < or << or <= or <<=
+	        case '<': {
+	        	currentChar = nextChar();  // consume '<';
+
+	        	if (currentChar == '<') {
+					text += currentChar;
+					nextChar();  // consume '<'
+					
+	        		if (currentChar == '=') {
+	        			text += currentChar;
+	                	nextChar();  // consume '='
+	        		}
+				}
+        		else if (currentChar == '=') {
+        			text += currentChar;
+                	nextChar();  // consume '='
+        		}
+
+    			break;
+	        }
+
+        	// > or >> or >= or >>=
+	        case '>': {
+	        	currentChar = nextChar();  // consume '>';
+
+	        	if (currentChar == '>') {
+					text += currentChar;
+					nextChar();  // consume '<'
+					
+	        		if (currentChar == '=') {
+	        			text += currentChar;
+	                	nextChar();  // consume '='
+	        		}
+				}
+        		else if (currentChar == '=') {
+        			text += currentChar;
+                	nextChar();  // consume '='
+        		}
+
+    			break;
+	        }
+	        
             default: {
                 nextChar();  // consume bad character
                 type = ERROR;
