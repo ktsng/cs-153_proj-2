@@ -1,0 +1,9 @@
+/* This is a comment. */
+// So is this.
+/* Here's a comment
+   that spans several
+   source lines. */
+// /* comment inside comment */
+/* All of this is /*a comment. */
+/* This is a comment */ but the latter part is not. */
+/not a comment 
