@@ -33,7 +33,7 @@ public enum JavaTokenType implements TokenType
 //    LEFT_BRACKET("["), RIGHT_BRACKET("]"), LEFT_BRACE("{"), RIGHT_BRACE("}"),
 //    UP_ARROW("^"), DOT_DOT(".."),
     
-    PILDE("~"), EXCLAMATION_MARK("!"), AT_SIGN("@"), PERCENT("%"), UP_ARROW("^"), 
+    TILDE("~"), EXCLAMATION_MARK("!"), AT_SIGN("@"), PERCENT("%"), UP_ARROW("^"), 
     AMPERSAND("&"), STAR("*"), MINUS("-"), PLUS("+"), EQUALS("="),
     VERTICAL_BAR("|"), SLASH("/"), COLON(":"), SEMICOLON(";"), QUESTION_MARK("?"),
     LESS_THAN("<"), GREATER_THAN(">"), DOT("."), COMMA(","), QUOTE("'"), 
@@ -52,7 +52,7 @@ public enum JavaTokenType implements TokenType
     private static final int FIRST_RESERVED_INDEX = ABSTRACT.ordinal();
     private static final int LAST_RESERVED_INDEX  = WHILE.ordinal();
 
-    private static final int FIRST_SPECIAL_INDEX = PILDE.ordinal();
+    private static final int FIRST_SPECIAL_INDEX = TILDE.ordinal();
     private static final int LAST_SPECIAL_INDEX  = STAR_SLASH.ordinal();
 
     private String text;  // token text
