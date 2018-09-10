@@ -67,11 +67,6 @@ public class JavaCharacterToken extends JavaToken {
 	      valueBuffer.append(currentChar);
 	      currentChar = nextChar();
 	    }
-
-		
-		
-		
-		
 		
 	    // closing quote
 	    if (currentChar == '\'') {
