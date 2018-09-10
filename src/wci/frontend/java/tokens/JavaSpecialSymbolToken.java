@@ -204,7 +204,7 @@ public class JavaSpecialSymbolToken extends JavaToken
 
 	        	if (currentChar == '<') {
 					text += currentChar;
-					nextChar();  // consume '<'
+					currentChar = nextChar();  // consume '<'
 					
 	        		if (currentChar == '=') {
 	        			text += currentChar;
@@ -225,7 +225,7 @@ public class JavaSpecialSymbolToken extends JavaToken
 
 	        	if (currentChar == '>') {
 					text += currentChar;
-					nextChar();  // consume '<'
+					currentChar = nextChar();  // consume '>'
 					
 	        		if (currentChar == '=') {
 	        			text += currentChar;
