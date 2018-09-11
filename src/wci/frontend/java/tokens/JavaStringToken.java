@@ -78,9 +78,6 @@ public class JavaStringToken extends JavaToken
                 }
             	currentChar = nextChar();  // consume character
             }
-
-            // Quote?  Each pair of adjacent quotes represents a single-quote.
-            
         } while ((currentChar != '\"') && (currentChar != EOF));
 
         if (currentChar == '\"') {
