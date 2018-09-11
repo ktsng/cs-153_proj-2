@@ -43,19 +43,19 @@ public class JavaCharacterToken extends JavaToken {
         	
         	if (currentChar == 't') {
         		valueBuffer.append('\t');
-        		textBuffer.append("\\t\'");
+        		textBuffer.append("\\t");
         	} else if (currentChar == 'n') {
         		valueBuffer.append('\n');
-        		textBuffer.append("\\n\'");
+        		textBuffer.append("\\n");
         	} else if (currentChar == '\'') {
         		valueBuffer.append('\'');
-        		textBuffer.append("\\\'\'");
+        		textBuffer.append("\\\'");
         	} else if (currentChar == '\"') {
         		valueBuffer.append('\"');
-        		textBuffer.append("\\\"\'");
+        		textBuffer.append("\\\"");
         	} else if (currentChar == '\\') {
         		valueBuffer.append('\\');
-        		textBuffer.append("\\\\\'");
+        		textBuffer.append("\\\\");
         	} else {
                 type = ERROR;
                 value = INVALID_CHARACTER;
@@ -65,7 +65,10 @@ public class JavaCharacterToken extends JavaToken {
         	valueBuffer.append(currentChar);
         }
 
+        // System.out.println(text);
+        textBuffer.append('\'');
         text = textBuffer.toString();
+
         currentChar = nextChar();
 
         if (currentChar != '\'') {
