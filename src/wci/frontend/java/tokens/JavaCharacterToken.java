@@ -34,59 +34,47 @@ public class JavaCharacterToken extends JavaToken {
     {
         StringBuilder textBuffer = new StringBuilder();
         StringBuilder valueBuffer = new StringBuilder();
-        
-        char currentChar = nextChar();  // consume initial quote
         textBuffer.append('\'');
-		
-		if (currentChar == '\\') {
-			textBuffer.append('\\');
-            currentChar = nextChar();  // consume character
-            
-            if (currentChar == '\\' || currentChar == '\'' || currentChar == 'n' || currentChar == 't') {
-            	textBuffer.append(currentChar);
-            	
-            	currentChar = nextChar();
-            	
-            	if (currentChar == '\'') {
-            		nextChar();
-            		textBuffer.append('\'');
-            		
-            		type = CHARACTER;
-                    value = textBuffer.toString();
-            	} else {
-            		type = ERROR;
-            		value = UNEXPECTED_EOF;
-            	}
-            } else {
+
+        char currentChar = nextChar();  // consume initial quote
+        
+        if (currentChar == '\\') {
+        	currentChar = nextChar();  // consume character
+        	
+        	if (currentChar == 't') {
+        		valueBuffer.append('\t');
+        		textBuffer.append("\\t\'");
+        	} else if (currentChar == 'n') {
+        		valueBuffer.append('\n');
+        		textBuffer.append("\\n\'");
+        	} else if (currentChar == '\'') {
+        		valueBuffer.append('\'');
+        		textBuffer.append("\\\'\'");
+        	} else if (currentChar == '\"') {
+        		valueBuffer.append('\"');
+        		textBuffer.append("\\\"\'");
+        	} else if (currentChar == '\\') {
+        		valueBuffer.append('\\');
+        		textBuffer.append("\\\\\'");
+        	} else {
                 type = ERROR;
                 value = INVALID_CHARACTER;
-            }
-		}
-	    else {
-	      textBuffer.append(currentChar);
-	      valueBuffer.append(currentChar);
-	      currentChar = nextChar();
-	    }
-		
-	    // closing quote
-	    if (currentChar == '\'') {
-	      nextChar(); // consume final quote
-	      textBuffer.append('\'');
+        	}
+        } else {
+        	textBuffer.append(currentChar);
+        	valueBuffer.append(currentChar);
+        }
 
-	      type = CHARACTER;
-	      value = valueBuffer.toString();
-	    } else {
-	      type = ERROR;
-	      value = INVALID_CHARACTER;
+        text = textBuffer.toString();
+        currentChar = nextChar();
 
-	      // loop until found closing '
-	      do {
-	        currentChar = nextChar();
-	        textBuffer.append(currentChar);
-	      } while (currentChar != '\'');
-	      currentChar = nextChar();
-	    }
-
-	text = textBuffer.toString();
+        if (currentChar != '\'') {
+            type = ERROR;
+            value = INVALID_CHARACTER;
+        } else {
+            type = CHARACTER;
+            value = valueBuffer;
+            nextChar();
+        }
     }
 }
