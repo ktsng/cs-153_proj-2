@@ -50,27 +50,42 @@ public class JavaStringToken extends JavaToken
             }
 
             if ((currentChar != '\"') && (currentChar != EOF)) {
-                textBuffer.append(currentChar);
-                valueBuffer.append(currentChar);
-                currentChar = nextChar();  // consume character
+            	if (currentChar == '\\') {
+                	currentChar = nextChar();  // consume character
+                	
+                	if (currentChar == 't') {
+                		valueBuffer.append('\t');
+                		textBuffer.append("\\t");
+                	} else if (currentChar == 'n') {
+                		valueBuffer.append('\n');
+                		textBuffer.append("\\n");
+                	} else if (currentChar == '\'') {
+                		valueBuffer.append('\'');
+                		textBuffer.append("\\\'");
+                	} else if (currentChar == '\"') {
+                		valueBuffer.append('\"');
+                		textBuffer.append("\\\"");
+                	} else if (currentChar == '\\') {
+                		valueBuffer.append('\\');
+                		textBuffer.append("\\\\");
+                	} else {
+                        type = ERROR;
+                        value = INVALID_CHARACTER;
+                	}
+                } else {
+                	textBuffer.append(currentChar);
+                	valueBuffer.append(currentChar);
+                }
+            	currentChar = nextChar();  // consume character
             }
 
             // Quote?  Each pair of adjacent quotes represents a single-quote.
-            if (currentChar == '\"') {
-                while ((currentChar == '\"') && (peekChar() == '\"')) {
-                    textBuffer.append("\"");
-                    textBuffer.append("\"");
-                    valueBuffer.append(currentChar); // append single-quote
-                    currentChar = nextChar();        // consume pair of quotes
-                    currentChar = nextChar();
-                }
-            }
+            
         } while ((currentChar != '\"') && (currentChar != EOF));
 
         if (currentChar == '\"') {
             nextChar();  // consume final quote
             textBuffer.append('\"');
-
             type = STRING;
             value = valueBuffer.toString();
         }
